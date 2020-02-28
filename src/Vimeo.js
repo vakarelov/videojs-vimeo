@@ -34,7 +34,7 @@ function injectCss() {
   head.appendChild(style);
 }
 
-var Tech = videojs.getTech('Tech');
+const Tech = videojs.getTech('Tech');
 
 /**
  * Vimeo - Wrapper for Video Player API
@@ -97,7 +97,7 @@ class Vimeo extends Tech {
       });
     });
 
-    this._player.on('pause', () => this._vimeoState.playing = false);
+    this._player.on('pause', () => (this._vimeoState.playing = false));
     this._player.on('play', () => {
       this._vimeoState.playing = true;
       this._vimeoState.ended = false;
@@ -106,7 +106,7 @@ class Vimeo extends Tech {
       this._vimeoState.playing = false;
       this._vimeoState.ended = true;
     });
-    this._player.on('volumechange', (v) => this._vimeoState.volume = v);
+    this._player.on('volumechange', (v) => (this._vimeoState.volume = v));
     this._player.on('error', e => this.trigger('error', e));
 
     this.triggerReady();
@@ -124,10 +124,10 @@ class Vimeo extends Tech {
       }
     };
 
-    this._player.getCurrentTime().then(time => state.progress.seconds = time);
-    this._player.getDuration().then(time => state.progress.duration = time);
-    this._player.getPaused().then(paused => state.playing = !paused);
-    this._player.getVolume().then(volume => state.volume = volume);
+    this._player.getCurrentTime().then(time => (state.progress.seconds = time));
+    this._player.getDuration().then(time => (state.progress.duration = time));
+    this._player.getPaused().then(paused => (state.playing = !paused));
+    this._player.getVolume().then(volume => (state.volume = volume));
   }
 
   createEl() {
@@ -212,25 +212,25 @@ class Vimeo extends Tech {
   // setMuted(mute) {}
 }
 
-  Vimeo.prototype.featuresTimeupdateEvents = true;
+Vimeo.prototype.featuresTimeupdateEvents = true;
 
-  Vimeo.isSupported = function() {
+Vimeo.isSupported = function() {
   return true;
 };
 
-  // Add Source Handler pattern functions to this tech
-  videojs.with
-  Tech.withSourceHandlers(Vimeo);
+// Add Source Handler pattern functions to this tech
+Tech.withSourceHandlers(Vimeo);
 
-  Vimeo.nativeSourceHandler = {
+Vimeo.nativeSourceHandler = {
 };
 
 /**
  * Check if Vimeo can play the given videotype
- * @param  {String} type    The mimetype to check
- * @return {String}         'maybe', or '' (empty string)
+ *
+ * @param  {string} source    The mimetype to check
+ * @return {string}         'maybe', or '' (empty string)
  */
-Vimeo.nativeSourceHandler.canPlayType = function (source) {
+Vimeo.nativeSourceHandler.canPlayType = function(source) {
   if (source === 'video/vimeo') {
     return 'maybe';
   }
@@ -245,7 +245,7 @@ Vimeo.nativeSourceHandler.canPlayType = function (source) {
  * @return {String}         'maybe', or '' (empty string)
  * @note: Copied over from YouTube — not sure this is relevant
  */
-Vimeo.nativeSourceHandler.canHandleSource = function (source) {
+Vimeo.nativeSourceHandler.canHandleSource = function(source) {
   if (source.type) {
     return Vimeo.nativeSourceHandler.canPlayType(source.type);
   } else if (source.src) {
@@ -256,12 +256,12 @@ Vimeo.nativeSourceHandler.canHandleSource = function (source) {
 };
 
 // @note: Copied over from YouTube — not sure this is relevant
-Vimeo.nativeSourceHandler.handleSource = function (source, tech) {
+Vimeo.nativeSourceHandler.handleSource = function(source, tech) {
   tech.src(source.src);
 };
 
 // @note: Copied over from YouTube — not sure this is relevant
-Vimeo.nativeSourceHandler.dispose = function () { };
+Vimeo.nativeSourceHandler.dispose = function() { };
 
 Vimeo.registerSourceHandler(Vimeo.nativeSourceHandler);
 
