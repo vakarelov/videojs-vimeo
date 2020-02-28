@@ -2438,8 +2438,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Component = _video2.default.getComponent('Component');
-var Tech = _video2.default.getComponent('Tech');
 var cssInjected = false;
 
 // Since the iframe can't be touched using Vimeo's way of embedding,
@@ -2464,6 +2462,8 @@ function injectCss() {
 
   head.appendChild(style);
 }
+
+var Tech = _video2.default.getTech('Tech');
 
 /**
  * Vimeo - Wrapper for Video Player API
@@ -2582,7 +2582,7 @@ var Vimeo = function (_Tech) {
   };
 
   Vimeo.prototype.createEl = function createEl() {
-    var div = _video2.default.createEl('div', {
+    var div = _video2.default.dom.createEl('div', {
       id: this.options_.techId
     });
 
@@ -2673,6 +2673,7 @@ Vimeo.isSupported = function () {
 };
 
 // Add Source Handler pattern functions to this tech
+_video2.default.with;
 Tech.withSourceHandlers(Vimeo);
 
 Vimeo.nativeSourceHandler = {};
@@ -2717,8 +2718,12 @@ Vimeo.nativeSourceHandler.dispose = function () {};
 
 Vimeo.registerSourceHandler(Vimeo.nativeSourceHandler);
 
-Component.registerComponent('Vimeo', Vimeo);
-Tech.registerTech('Vimeo', Vimeo);
+// Older versions of VJS5 doesn't have the registerTech function
+if (typeof _video2.default.registerTech !== 'undefined') {
+  _video2.default.registerTech('Vimeo', Vimeo);
+} else {
+  _video2.default.registerComponent('Vimeo', Vimeo);
+}
 
 // Include the version number.
 Vimeo.VERSION = '0.0.1';
