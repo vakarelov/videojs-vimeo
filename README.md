@@ -1,23 +1,43 @@
-# Videojs Vimeo plugin
+# Videojs Vimeo plugin hard fork
 
-Videojs Vimeo plugin using the official Vimeo Player API. This is heavily
-inspired by the official [VideoJS YouTube project](https://github.com/videojs/videojs-youtube).
+#### videojs-vimeo official plugin fork for supporting videojs v7.6.6 onwards.
+
+This project is a hard fork of the currently unmaintained official videojs-vimeo plugin: https://github.com/videojs/videojs-vimeo
+
+This fork has some significant changes in project structure:
+
+- Build now uses rollup;
+
+- Project linting now uses eslint + videojs styleguide;
+
+- Project folder structure reworked;
+
+- Lib version reseted relative to the official plugin.
 
 ## Installation
 
-For now, the package is not published on any package manager — download the dist file or
-point your package manage at this repo.
+```bash
+npm i @devmobiliza/videojs-vimeo
+// OR
+yarn add @devmobiliza/videojs-vimeo
+```
 
 ## Usage
 
-See [index.html](https://github.com/videojs/videojs-vimeo/blob/master/index.html)
+- CommonJS:
 
-## Fork Roadmap
+```js
+import videojs from 'video.js';
+import '@devmobiliza/videojs-vimeo/dist/videojs-vimeo.cjs';
+```
 
-- Project Linting with ESLINT videojs standard - DONE
-- Refac Project Structure removing unused files and branches - DONE
-- Build with Rollup -> DONE
-- New hotrebuild on file editing
-- CI with GithubActions + publishing on NPM supporting @Mobiliza namespace
+- Module:
 
-[videojs]: http://videojs.com/
+```js
+import videojs from 'video.js';
+import '@devmobiliza/videojs-vimeo/dist/videojs-vimeo.esm';
+```
+
+- Browser:
+
+See [index.html](https://github.com/Mobiliza/videojs-vimeo/blob/master/index.html)
