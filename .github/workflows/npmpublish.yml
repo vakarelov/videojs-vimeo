@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: "12.x"
           registry-url: "https://registry.npmjs.org"
-          scope: "@mobiliza"
+          scope: "@devmobiliza"
       - run: yarn install
       - run: yarn build:lib
       - run: npm publish --access public
