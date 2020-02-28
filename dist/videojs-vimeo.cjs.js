@@ -59,11 +59,13 @@ class Vimeo extends Tech {
 
   initVimeoPlayer() {
     const vimeoOptions = {
-      url: this.options_.source.src,
+      url: this.options_.source.src + '#t=' + this.options_['#t'],
       byline: false,
       portrait: false,
       title: false
     };
+
+    console.debug('VimeoOptions debug ->', vimeoOptions);
 
     if (this.options_.autoplay) {
       vimeoOptions.autoplay = true;
@@ -84,7 +86,6 @@ class Vimeo extends Tech {
       vimeoOptions.loop = this.options_.loop;
     }
     if (this.options_.color) {
-      // vimeo is the only API on earth to reject hex color with leading #
       vimeoOptions.color = this.options_.color.replace(/^#/, '');
     }
 
@@ -222,7 +223,7 @@ class Vimeo extends Tech {
 
 Vimeo.prototype.featuresTimeupdateEvents = true;
 
-Vimeo.isSupported = function() {
+Vimeo.isSupported = function () {
   return true;
 };
 
@@ -238,7 +239,7 @@ Vimeo.nativeSourceHandler = {
  * @param  {string} source    The mimetype to check
  * @return {string}         'maybe', or '' (empty string)
  */
-Vimeo.nativeSourceHandler.canPlayType = function(source) {
+Vimeo.nativeSourceHandler.canPlayType = function (source) {
   if (source === 'video/vimeo') {
     return 'maybe';
   }
@@ -253,7 +254,7 @@ Vimeo.nativeSourceHandler.canPlayType = function(source) {
  * @return {String}         'maybe', or '' (empty string)
  * @note: Copied over from YouTube — not sure this is relevant
  */
-Vimeo.nativeSourceHandler.canHandleSource = function(source) {
+Vimeo.nativeSourceHandler.canHandleSource = function (source) {
   if (source.type) {
     return Vimeo.nativeSourceHandler.canPlayType(source.type);
   } else if (source.src) {
@@ -264,12 +265,12 @@ Vimeo.nativeSourceHandler.canHandleSource = function(source) {
 };
 
 // @note: Copied over from YouTube — not sure this is relevant
-Vimeo.nativeSourceHandler.handleSource = function(source, tech) {
+Vimeo.nativeSourceHandler.handleSource = function (source, tech) {
   tech.src(source.src);
 };
 
 // @note: Copied over from YouTube — not sure this is relevant
-Vimeo.nativeSourceHandler.dispose = function() { };
+Vimeo.nativeSourceHandler.dispose = function () { };
 
 Vimeo.registerSourceHandler(Vimeo.nativeSourceHandler);
 
