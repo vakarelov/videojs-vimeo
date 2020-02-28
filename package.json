@@ -6,7 +6,7 @@
   "module": "dist/videojs-vimeo.esm.js",
   "browser": "dist/videojs-vimeo.umd.js",
   "scripts": {
-    "build": "rollup -c",
+    "build:lib": "rollup -c",
     "dev": "rollup -c -w"
   },
   "keywords": [
