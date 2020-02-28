@@ -1,6 +1,6 @@
 {
   "name": "@devmobiliza/videojs-vimeo",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Videojs Vimeo official plugin fork for working with video.js v7.6.6 onwards.",
   "main": "dist/videojs-vimeo.cjs.js",
   "module": "dist/videojs-vimeo.esm.js",

@@ -59,13 +59,11 @@ class Vimeo extends Tech {
 
   initVimeoPlayer() {
     const vimeoOptions = {
-      url: this.options_.source.src + '#t=' + this.options_['#t'],
+      url: this.options_.source.src,
       byline: false,
       portrait: false,
       title: false
     };
-
-    console.debug('VimeoOptions debug ->', vimeoOptions);
 
     if (this.options_.autoplay) {
       vimeoOptions.autoplay = true;
@@ -155,16 +153,12 @@ class Vimeo extends Tech {
   }
 
   src() {
-    // @note: Not sure why this is needed but videojs requires it
     return this.options_.source;
   }
 
   currentSrc() {
     return this.options_.source.src;
   }
-
-  // @note setSrc is used in other usecases (YouTube, Html) it doesn't seem required here
-  // setSrc() {}
 
   currentTime() {
     return this._vimeoState.progress.seconds;
@@ -216,9 +210,6 @@ class Vimeo extends Tech {
     return 1;
   }
 
-  // Vimeo does has a mute API and native controls aren't being used,
-  // so setMuted doesn't really make sense and shouldn't be called.
-  // setMuted(mute) {}
 }
 
 Vimeo.prototype.featuresTimeupdateEvents = true;
