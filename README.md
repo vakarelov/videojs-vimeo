@@ -12,8 +12,4 @@ point your package manage at this repo.
 
 See [index.html](https://github.com/videojs/videojs-vimeo/blob/master/index.html)
 
-## Other Plugins That Work With Latest VideoJS Version
-
-https://github.com/videojs/videojs-youtube
-
 [videojs]: http://videojs.com/
