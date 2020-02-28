@@ -41,3 +41,11 @@ import '@devmobiliza/videojs-vimeo/dist/videojs-vimeo.esm';
 - Browser:
 
 See [index.html](https://github.com/Mobiliza/videojs-vimeo/blob/master/index.html)
+
+## Events / Vimeo Options
+
+Events, like `on('play')`, `one('play')` work as per the video.js API: https://docs.videojs.com/
+
+For setting the time of the player the `videojs.currentTime(TIME_SECONDS)` function can be used.
+
+Vimeo options are available here (must be used with the `vimeo` key in the options object of the video.js): https://vimeo.zendesk.com/hc/pt/articles/360001494447-Usando-os-par%C3%A2metros-do-player
