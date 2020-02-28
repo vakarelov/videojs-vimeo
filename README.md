@@ -14,8 +14,9 @@ See [index.html](https://github.com/videojs/videojs-vimeo/blob/master/index.html
 
 ## Fork Roadmap
 
-- Project Linting with ESLINT + AirBnb
-- Refac Project Structure removing unused files and branches
+- Project Linting with ESLINT videojs standard - DONE
+- Refac Project Structure removing unused files and branches - DONE
+- Build with Rollup -> DONE
 - New hotrebuild on file editing
 - CI with GithubActions + publishing on NPM supporting @Mobiliza namespace
 

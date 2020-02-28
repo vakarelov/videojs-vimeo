@@ -1,28 +1,19 @@
 {
   "name": "videojs-vimeo",
   "version": "2.0.3",
-  "description": "Videojs Vimeo plugin using the official Vimeo Player API.",
-  "main": "./dist/videojs-vimeo.min.js",
+  "description": "Videojs Vimeo official plugin fork using the official Vimeo Player API.",
+  "main": "dist/videojs-vimeo.cjs.js",
+  "module": "dist/videojs-vimeo.esm.js",
+  "browser": "dist/videojs-vimeo.umd.js",
   "scripts": {
-    "prebuild": "npm run clean",
-    "build": "npm-run-all -p build:*",
-    "build:js": "npm-run-all build:js:babel build:js:browserify build:js:bannerize build:js:collapse build:js:uglify",
-    "build:js:babel": "babel src -d es5",
-    "build:js:bannerize": "bannerize dist/videojs-vimeo.js --banner=scripts/banner.ejs",
-    "build:js:browserify": "browserify . -g browserify-shim -s videojs-vimeo -o dist/videojs-vimeo.js",
-    "build:js:collapse": "bundle-collapser dist/videojs-vimeo.js -o dist/videojs-vimeo.min.js",
-    "build:js:uglify": "uglifyjs dist/videojs-vimeo.min.js --comments --mangle --compress -o dist/videojs-vimeo.min.js",
-    "clean": "rimraf dist test/dist es5 && mkdirp dist test/dist es5",
-    "lint": "vjsstandard",
-    "start": "babel-node scripts/server.js",
-    "version": "babel-node scripts/version.js",
-    "postversion": "babel-node scripts/postversion.js",
-    "prepublish": "npm run build"
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
   },
   "keywords": [
     "videojs",
     "videojs-plugin",
-    "vimeo"
+    "vimeo",
+    "mobiliza"
   ],
   "author": "Kevin Aguiar <kevin.aguiar@mobiliza.com.br>",
   "license": "MIT",
@@ -34,25 +25,23 @@
   "vjsstandard": {
     "ignore": [
       "dist",
-      "docs",
-      "es5",
-      "scripts",
-      "test/dist"
+      "scripts"
     ]
   },
   "files": [
     "dist/",
-    "docs/",
     "index.html",
-    "scripts/",
     "src/"
   ],
   "dependencies": {
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
     "@vimeo/player": "^2.10.0",
     "browserify-versionify": "^1.0.6",
     "eslint-plugin-jsdoc": "^21.0.0",
     "eslint-plugin-json-light": "^1.0.3",
     "eslint-plugin-markdown": "^1.0.2",
+    "rollup": "^1.32.0",
     "video.js": "^7.6.6"
   },
   "devDependencies": {
@@ -72,10 +61,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/videojs/videojs-vimeo.git"
+    "url": "git+https://github.com/Mobiliza/videojs-vimeo.git"
   },
   "bugs": {
-    "url": "https://github.com/videojs/videojs-vimeo/issues"
+    "url": "https://github.com/Mobiliza/videojs-vimeo/issues"
   },
-  "homepage": "https://github.com/videojs/videojs-vimeo#readme"
+  "homepage": "https://github.com/Mobiliza/videojs-vimeo/#readme"
 }
