@@ -1,6 +1,7 @@
 # Videojs Vimeo plugin hard fork
 
-#### videojs-vimeo official plugin fork for supporting videojs v7.6.6 onwards.
+#### videojs-vimeo  plugin fork for supporting videojs v7.6.6 onwards.
+It adds support for Controls paramter
 
 This project is a hard fork of the currently unmaintained official videojs-vimeo plugin: https://github.com/videojs/videojs-vimeo
 
@@ -14,12 +15,14 @@ This fork has some significant changes in project structure:
 
 - Lib version reseted relative to the official plugin.
 
+  
+
 ## Installation
 
 ```bash
-npm i @devmobiliza/videojs-vimeo
+npm i @vakarelov/videojs-vimeo
 // OR
-yarn add @devmobiliza/videojs-vimeo
+yarn add @vakarelov/videojs-vimeo
 ```
 
 ## Usage
@@ -28,14 +31,14 @@ yarn add @devmobiliza/videojs-vimeo
 
 ```js
 import videojs from 'video.js';
-import '@devmobiliza/videojs-vimeo/dist/videojs-vimeo.cjs';
+import '@vakarelov/videojs-vimeo/dist/videojs-vimeo.cjs';
 ```
 
 - Module:
 
 ```js
 import videojs from 'video.js';
-import '@devmobiliza/videojs-vimeo/dist/videojs-vimeo.esm';
+import '@vakarelov/videojs-vimeo/dist/videojs-vimeo.esm';
 ```
 
 - Browser:
