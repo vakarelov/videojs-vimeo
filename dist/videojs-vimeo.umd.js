@@ -2220,6 +2220,9 @@
       if (this.options_.color) {
         vimeoOptions.color = this.options_.color.replace(/^#/, '');
       }
+      if (this.options_.controls !== undefined) {
+                vimeoOptions.controls = this.options_.controls;
+      }
 
       this._player = new Player(this.el(), vimeoOptions);
       this.initVimeoState();
